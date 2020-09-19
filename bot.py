@@ -1,4 +1,4 @@
-from discord.ext import commands
+import discord.ext
 import os
 import traceback
 from datetime import datetime, timedelta
@@ -9,7 +9,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 
 @bot.event
 async def on_voice_state_update(member, before, after):
-    if member.guild.id == (before.channel != after.channel):
+    if member.guild.id == 'SERVER_ID' and (before.channel != after.channel):
         now = datetime.utcnow() + timedelta(hours=9)
         alert_channel = client.get_channel('CHANNEL_ID')
         if before.channel is None:
