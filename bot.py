@@ -1,5 +1,5 @@
 import discord
-#import os
+import os
 #import traceback
 from datetime import datetime, timedelta
 
