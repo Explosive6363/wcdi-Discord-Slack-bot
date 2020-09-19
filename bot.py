@@ -1,10 +1,10 @@
-import discord.ext
-import os
-import traceback
+import discord
+#import os
+#import traceback
 from datetime import datetime, timedelta
 
 
-bot = discord.Bot(command_prefix='/')
+#bot = discord.Bot(command_prefix='/')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
@@ -20,15 +20,15 @@ async def on_voice_state_update(member, before, after):
             msg = f'{now:%m/%d-%H:%M} に {member.name} が {before.channel.name} から退出しました。'
             await alert_channel.send(msg)
 
-@bot.event
-async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+#@bot.event
+#async def on_command_error(ctx, error):
+#    orig_error = getattr(error, "original", error)
+#    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
+#    await ctx.send(error_msg)
+#
+#@bot.command()
+#async def ping(ctx):
+#    await ctx.send('pong')
 
 client.run(token)
-bot.run(token)
+#bot.run(token)
