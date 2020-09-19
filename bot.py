@@ -4,10 +4,11 @@ import traceback
 from datetime import datetime, timedelta
 
 
-bot = commands.Bot(command_prefix='/')
+bot = discord.Bot(command_prefix='/')
+client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
-@bot.event
+@client.event
 async def on_voice_state_update(member, before, after):
     if member.guild.id == 'SERVER_ID' and (before.channel != after.channel):
         now = datetime.utcnow() + timedelta(hours=9)
