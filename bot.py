@@ -14,11 +14,13 @@ slack = slackweb.Slack(url=webhook)
 @client.event
 async def on_voice_state_update(member, before, after):
     now = datetime.utcnow() + timedelta(hours=9)
-    if before.channel is None:
+    if before.channel == after.channel:
+        return
+    elif before.channel is None:
         msg = f'{now:%m/%d-%H:%M} に {member.name} が {after.channel.name} に参加しました。'
     elif after.channel is None:
         msg = f'{now:%m/%d-%H:%M} に {member.name} が {before.channel.name} から退出しました。'
-    else :
+    else:
         msg = f'{now:%m/%d-%H:%M} に {member.name} が {before.channel.name} から {after.channel.name} に移動しました。'
     slack.notify(text=msg)
 
