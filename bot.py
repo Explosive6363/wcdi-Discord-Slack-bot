@@ -17,11 +17,11 @@ async def on_voice_state_update(member, before, after):
     if before.channel == after.channel:
         return
     elif before.channel is None:
-        msg = f'{now:%m/%d-%H:%M} に {member.name} が {after.channel.name} に参加しました。'
+        msg = f'{now:%m/%d-%H:%M} に {member.display_name} が {after.channel.name} に参加しました。'
     elif after.channel is None:
-        msg = f'{now:%m/%d-%H:%M} に {member.name} が {before.channel.name} から退出しました。'
+        msg = f'{now:%m/%d-%H:%M} に {member.display_name} が {before.channel.name} から退出しました。'
     else:
-        msg = f'{now:%m/%d-%H:%M} に {member.name} が {before.channel.name} から {after.channel.name} に移動しました。'
+        msg = f'{now:%m/%d-%H:%M} に {member.display_name} が {before.channel.name} から {after.channel.name} に移動しました。'
     slack.notify(text=msg)
 
 client.run(token)
