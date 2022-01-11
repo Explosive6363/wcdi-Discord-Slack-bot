@@ -4,8 +4,6 @@ import os
 from datetime import datetime, timedelta
 
 token = os.environ['DISCORD_BOT_TOKEN']
-server = os.environ['SERVER_ID']
-channel = os.environ['CHANNEL_ID']
 webhook = os.environ['WEBHOOK_URL']
 
 client = discord.Client()
