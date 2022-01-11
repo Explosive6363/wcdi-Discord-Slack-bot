@@ -1,0 +1,10 @@
+---
+version: '3'
+services:
+  circlebot:
+    container_name: 'circle-bot'
+    image: circlebot:latest
+    restart: always
+    environment:
+      - DISCORD_BOT_TOKEN=${discord_bot_token}
+      - WEBHOOK_URL=${slack_webhook_url}
