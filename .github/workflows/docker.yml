@@ -16,10 +16,10 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build -t explosive6363/discord-bot:latest .
+        run: docker build -t explosive6363/discord-bot:${{ github.sha }} .
 
       - name: Deploy :latest
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push explosive6363/discord-bot:latest
+          args: push explosive6363/discord-bot:${{ github.sha }}
