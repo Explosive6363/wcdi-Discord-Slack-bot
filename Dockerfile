@@ -7,8 +7,8 @@ ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 ENV TERM xterm
 
-ADD .requirements.txt /
-ADD .bot.py /
+ADD ./requirements.txt /
+ADD ./bot.py /
 
 RUN pip3 install -r requirements.txt
 
