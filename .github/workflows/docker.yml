@@ -1,8 +1,6 @@
 name: Push to Docker registry
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
+
 jobs:
   push:
     runs-on: ubuntu-latest
