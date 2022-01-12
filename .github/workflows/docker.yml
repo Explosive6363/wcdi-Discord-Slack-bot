@@ -16,10 +16,10 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build -t username/imagename:latest .
+        run: docker build -t explosive6363/discord-bot:latest .
 
       - name: Deploy :latest
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push username/imagename:latest
+          args: push explosive6363/discord-bot:latest
