@@ -1,5 +1,8 @@
 name: Push to Docker registry
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
   push:
@@ -16,11 +19,10 @@ jobs:
 
       - name: Build :latest
         if: success()
-        run: docker build -t explosive6363/discord-bot:${{ github.sha }} .
+        run: docker build -t explosive6363/discord-bot:${{ github.sha }} -t explosive6363/discord-bot:latest .
 
       - name: Deploy :latest
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push explosive6363/discord-bot:${{ github.sha }}
-
+          args: push explosive6363/discord-bot:${{ github.sha }} explosive6363/discord-bot:latest
