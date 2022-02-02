@@ -2,7 +2,6 @@ import discord
 import slackweb
 import os
 from datetime import datetime, timedelta
-import syslog
 
 token = os.environ['DISCORD_BOT_TOKEN']
 webhook = os.environ['WEBHOOK_URL']
@@ -21,7 +20,7 @@ async def on_voice_state_update(member, before, after):
         msg = f'{now:%m/%d-%H:%M} に {member.display_name} が {before.channel.name} から退出しました。'
     else:
         msg = f'{now:%m/%d-%H:%M} に {member.display_name} が {before.channel.name} から {after.channel.name} に移動しました。'
-    syslog.syslog(syslog.LOG_INFO, msg)
+    print(msg)
     slack.notify(text=msg)
 
 client.run(token)
